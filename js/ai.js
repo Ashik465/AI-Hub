@@ -22,16 +22,24 @@ data.forEach(aiDetails => {
     // console.log(aiDetails);
 
     const div =document.createElement('div');
-    div.classList.add("card", "w-96", "bg-base-100", "shadow-xl")
+    div.classList.add("card", "w-full", "bg-base-100", "shadow-xl","p-5","border" )
 
-    div.innerHTML=` <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-    <div class="card-body">
-      <h2 class="card-title">Shoes!</h2>
-      <p>If a dog chews shoes whose shoes does he choose?</p>
-      <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
-      </div>
-    </div> ` ;
+    const {image,features, name} =aiDetails ;
+
+    div.innerHTML=` <figure><img class="rounded-lg " src=${image} alt="Shoes" /></figure>
+    <h1 class="text-2xl font-bold my-2">Features</h1>
+
+    <div class="mb-4">
+                    <p>1.${features[0]}</p>
+                    <p>2.${features[1]}</p>
+                    <p>3.${features[2]}</p>
+                   </div>
+
+                   <hr>
+
+                   <h1 class="text-2xl font-bold my-2">${name}</h1>
+    
+    ` ;
 
     container.appendChild(div);
 
