@@ -1,32 +1,37 @@
-// fetch data 
+// fetch data
 
 const loadAI = async () => {
+  const res = await fetch("https://openapi.programming-hero.com/api/ai/tools");
 
-    const res = await fetch('https://openapi.programming-hero.com/api/ai/tools');
-    
-    const data = await res.json() ;
+  const data = await res.json();
 
-    displayAI(data.data.tools.slice(0,6) );
+  displayAI(data.data.tools.slice(0, 6));
+};
 
-}
+// display data
 
-// display data 
+const displayAI = (data) => {
+  // console.log(data );
 
-const displayAI =  (data) => {
+  const container = document.getElementById("card-container");
+  container.innerHTML="";
 
-// console.log(data );
-
-const container =document.getElementById('card-container');
-
-data.forEach(aiDetails => {
+  data.forEach((aiDetails) => {
     // console.log(aiDetails);
 
-    const div =document.createElement('div');
-    div.classList.add("card", "w-full", "bg-base-100", "shadow-xl","p-5","border" )
+    const div = document.createElement("div");
+    div.classList.add(
+      "card",
+      "w-full",
+      "bg-base-100",
+      "shadow-xl",
+      "p-5",
+      "border"
+    );
 
-    const {image,features, name,published_in} =aiDetails ;
+    const { image, features, name, published_in } = aiDetails;
 
-    div.innerHTML=` <figure><img class="rounded-lg " src=${image} alt="Shoes" /></figure>
+    div.innerHTML = ` <figure><img class="rounded-lg " src=${image} alt="Shoes" /></figure>
     <h1 class="text-2xl font-bold my-2">Features</h1>
 
     <div class="mb-4 text-[#585858]">
@@ -53,18 +58,25 @@ data.forEach(aiDetails => {
                    </div>
                  </div>
     
-    ` ;
+    `;
 
     container.appendChild(div);
+  });
+};
 
+ 
+// see more 
 
-});
+const seeMore = async () => {
+    const res = await fetch("https://openapi.programming-hero.com/api/ai/tools");
+  
+    const data = await res.json();
+  
+    const seeMoreBtn = document.getElementById('see-more');
+    seeMoreBtn.classList.add('hidden')
 
+    displayAI(data.data.tools);
+  };
 
-
-
-}
-
-
-
-loadAI();
+// default calling the function 
+  loadAI();
