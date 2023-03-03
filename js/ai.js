@@ -94,7 +94,7 @@ const loadSingleData = async (id) => {
     const modalContainer =document.getElementById('modal-body');
      modalContainer.innerHTML='';
 
-    const{image_link, input_output_examples,accuracy,description} =aiData ;
+    const{image_link, input_output_examples,accuracy,description,pricing} =aiData ;
 
     const div = document.createElement('div');
     div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
@@ -115,7 +115,19 @@ const loadSingleData = async (id) => {
                  
                  
                    <h1 class=" font-bold text-xl ">${description.slice(0,100)}</h1>
-                   <p></p>
+                   <div class="grid grid-cols-3 gap-2 mt-2">
+
+       <div class="bg-white text-[#03A30A] p-3 rounded-lg"><P >${pricing? pricing[0].price :"Free of Cost"  }</P>
+        <p>${pricing? pricing[0].plan :"Basic"  }</p>
+    </div>
+       <div class="bg-white text-[#F28927] p-3 rounded-lg"><P >${pricing? pricing[1].price :"Free Of Cost/"  }</P>
+        <p>${pricing? pricing[1].plan :"Pro"  }</p>
+    </div>
+       <div class="bg-white text-[#EB5757] p-3 rounded-lg"><P >${pricing? pricing[2].price.slice(0,10) :"Free of Cost /"  }</P>
+        <p>${pricing? pricing[2].plan :"Enterprise"  }</p>
+    </div>
+       
+           </div>
                    
                  
                </div>
