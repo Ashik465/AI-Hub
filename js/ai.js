@@ -1,6 +1,7 @@
 // fetch data
 
 const loadAI = async () => {
+    loader(true);
   const res = await fetch("https://openapi.programming-hero.com/api/ai/tools");
 
   const data = await res.json();
@@ -69,7 +70,7 @@ const displayAI = (data) => {
     container.appendChild(div);
   });
 
-  
+  loader(false);
 };
 
 
@@ -89,6 +90,62 @@ const loadSingleData = async (id) => {
   const showSingleData =(aiData)=> {
 
       console.log(aiData);
+
+    const modalContainer =document.getElementById('modal-body');
+     modalContainer.innerHTML='';
+
+    const{image_link, input_output_examples} =aiData ;
+
+    const div = document.createElement('div');
+    div.classList.add("modal-box", "relative", "overflow-visible", "w-11/12" , "max-w-5xl" );
+    //   div.innerHTML='';  
+    
+    div.innerHTML=`
+    
+    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute -right-4 -top-5  bg-[#EB5757] border-none"> ✕</label>
+     
+     
+       <div class="grid  grid-cols-1  md:grid-cols-2 gap-4  m-10 "> 
+  
+         
+ 
+         <div>
+           
+             <div class="card w-full bg-base-100 shadow-xl">
+                 
+                 <div class="card-body items-center text-center">
+                   <h2 class="card-title">Shoes!</h2>
+                   <p>If a dog chews shoes whose shoes does he choose?</p>
+                   
+                 </div>
+               </div>
+         </div>
+ 
+         
+ 
+ 
+         <div>
+      
+             <div class="card w-full bg-base-100 shadow-xl">
+                 <figure class="p-5">
+                   <img src="${image_link[0] } " alt="Shoes" class="rounded-xl" />
+                 </figure>
+                 <div class="card-body items-center text-center">
+                   <h2 class="card-title">${input_output_examples ? input_output_examples[0].input : 'Can you give any example?'}</h2>
+                   <p>${input_output_examples ? input_output_examples[0].output.slice(0,80) : 'No! Not Yet! Take a break!!!'}</p>
+                   
+                 </div>
+               </div>
+ 
+ 
+         </div>
+ 
+      </div> 
+ 
+ 
+    `
+
+  modalContainer.appendChild(div);
 
   }
 
@@ -112,6 +169,27 @@ const seeMore = async () => {
 
     displayAI(data.data.tools);
   };
+
+
+
+
+// spinner 
+
+const loader = isLoading => {
+
+    const load =  document.getElementById("loader") ;
+
+    if( isLoading) {
+
+      load.classList.remove('hidden');
+    }
+    else {
+      load.classList.add('hidden');
+
+    }
+
+ }
+
 
 // default calling the function 
   loadAI();
