@@ -37,7 +37,10 @@ const displayAI = (data) => {
     <div class="mb-4 text-[#585858]">
                     <p>1.${features[0]}</p>
                     <p>2.${features[1]}</p>
-                    <p>3.${features[2]}</p>
+                    <p>3.${features[2]? features[2]:'Not available'}</p>
+                    <p>4.${features[3]? features[3]:'Not available'}</p>
+                    
+                    
                    </div>
 
                    <hr>
