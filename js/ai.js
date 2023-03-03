@@ -94,7 +94,7 @@ const loadSingleData = async (id) => {
     const modalContainer =document.getElementById('modal-body');
      modalContainer.innerHTML='';
 
-    const{image_link, input_output_examples,accuracy,description,pricing} =aiData ;
+    const{image_link, input_output_examples,accuracy,description,pricing, features, integrations} =aiData ;
 
     const div = document.createElement('div');
     div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
@@ -102,10 +102,10 @@ const loadSingleData = async (id) => {
     
     div.innerHTML=`
     
-    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute -right-4 -top-5  bg-[#EB5757] border-none"> ✕</label>
+    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute right-2 top-6 z-10 md:-right-4 md:-top-5  bg-[#EB5757] border-none"> ✕</label>
      
      
-       <div class="grid  grid-cols-1  md:grid-cols-2 gap-4   "> 
+       <div class="grid  grid-cols-1  md:grid-cols-2 gap-4 z-1  "> 
   
          
  
@@ -115,12 +115,12 @@ const loadSingleData = async (id) => {
                  
                  
                    <h1 class=" font-bold text-xl ">${description.slice(0,100)}</h1>
-                   <div class="grid grid-cols-3 gap-2 mt-2">
+                   <div class="grid grid-cols-3 gap-2 mt-4 mb-4">
 
        <div class="bg-white text-[#03A30A] p-3 rounded-lg"><P >${pricing? pricing[0].price :"Free of Cost"  }</P>
         <p>${pricing? pricing[0].plan :"Basic"  }</p>
     </div>
-       <div class="bg-white text-[#F28927] p-3 rounded-lg"><P >${pricing? pricing[1].price :"Free Of Cost/"  }</P>
+       <div class="bg-white text-[#F28927] p-2 rounded-lg"><P >${pricing? pricing[1].price :"Free Of Cost/"  }</P>
         <p>${pricing? pricing[1].plan :"Pro"  }</p>
     </div>
        <div class="bg-white text-[#EB5757] p-3 rounded-lg"><P >${pricing? pricing[2].price.slice(0,10) :"Free of Cost /"  }</P>
@@ -128,7 +128,32 @@ const loadSingleData = async (id) => {
     </div>
        
            </div>
-                   
+               
+           
+           <div class="grid grid-cols-2 ">
+
+      <div>
+     <h1 class=" font-bold text-xl ">Features</h1>
+       <ul class="list-disc list-inside">
+        <li>${features? features[1].feature_name : "Not available"}</li> 
+        <li>${features? features[2].feature_name : "Not available"}</li>
+        <li>${features? features[3].feature_name : "Not available"}</li>
+        <li>${features[4]? features[4].feature_name : "Not available"}</li>
+       </ul>
+      </div>
+
+      
+      <div>
+        <h1 class=" font-bold text-xl ">Integrations</h1>
+        <ul class="list-disc list-inside">
+            <li>${integrations? integrations[0] :"NO data found"}</li> 
+            <li>${integrations? integrations[1] :"NO data found"}</li>
+            <li>${integrations? integrations[2] :"NO data found"}</li>
+            <li>${integrations? integrations[3] :"NO data found"}</li>
+           </ul>
+      </div>
+
+    </div>
                  
                </div>
          </div>
