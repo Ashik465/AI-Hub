@@ -29,7 +29,7 @@ const displayAI = (data) => {
       "border"
     );
 
-    const { image, features, name, published_in } = aiDetails;
+    const { image, features, name, published_in ,id } = aiDetails;
 
     div.innerHTML = ` <figure><img class="rounded-lg " src=${image} alt="Shoes" /></figure>
     <h1 class="text-2xl font-bold my-2">Features</h1>
@@ -56,7 +56,7 @@ const displayAI = (data) => {
        
                    <div >
                      <span class="text-[#EB5757] p-5 bg-red-50 rounded-full">
-                       <i class="fa-solid fa-arrow-right"></i
+                     <i onclick="loadSingleData('${id}')"  class="fa-solid fa-arrow-right"></i
                      ></span>
                    </div>
                  </div>
@@ -65,7 +65,32 @@ const displayAI = (data) => {
 
     container.appendChild(div);
   });
+
+  
 };
+
+
+// modal
+
+const loadSingleData = async (id) => {
+
+    
+    const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
+  
+    const data = await res.json();
+  
+    console.log(data.data);
+  };
+
+
+  
+
+
+
+
+
+
+
 
  
 // see more 
