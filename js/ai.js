@@ -94,10 +94,10 @@ const loadSingleData = async (id) => {
     const modalContainer =document.getElementById('modal-body');
      modalContainer.innerHTML='';
 
-    const{image_link, input_output_examples,accuracy} =aiData ;
+    const{image_link, input_output_examples,accuracy,description} =aiData ;
 
     const div = document.createElement('div');
-    div.classList.add("modal-box", "relative", "overflow-visible", "w-11/12" , "max-w-5xl" );
+    div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
     //   div.innerHTML='';  
     
     div.innerHTML=`
@@ -105,19 +105,19 @@ const loadSingleData = async (id) => {
     <label for="ai-modal-details" class="btn btn-sm btn-circle absolute -right-4 -top-5  bg-[#EB5757] border-none"> ✕</label>
      
      
-       <div class="grid  grid-cols-1  md:grid-cols-2 gap-4  m-10 "> 
+       <div class="grid  grid-cols-1  md:grid-cols-2 gap-4   "> 
   
          
  
          <div>
            
-             <div class="card w-full bg-base-100 shadow-xl">
+             <div class="card w-full bg-red-100 shadow-xl p-6">
                  
-                 <div class="card-body items-center text-center">
-                   <h2 class="card-title">Shoes!</h2>
-                   <p>If a dog chews shoes whose shoes does he choose?</p>
+                 
+                   <h1 class=" font-bold text-xl ">${description.slice(0,100)}</h1>
+                   <p></p>
                    
-                 </div>
+                 
                </div>
          </div>
  
