@@ -43,23 +43,47 @@
           id="card-container"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
-        <!-- exxxx -->
-          
+          <!-- exxxx -->
 
           <!-- enddd -->
         </div>
- </section>
+      </section>
 
- <!-- see more btn  -->
+      <!-- see more btn  -->
+
+      <div id="see-more" class="text-center text-white">
+        <button
+          onclick="seeMore()"
+          class="btn btn-primary bg-[#EB5757] border-none normal-case m-8 px-6"
+        >
+          See more
+        </button>
+      </div>
+
+      <!-- modal  -->
 
 
- <div id="see-more" class="text-center text-white">
-    <button onclick="seeMore()"
-      class="btn btn-primary bg-[#EB5757]   border-none normal-case m-8 px-6"
-    >
-      See more
-    </button>
+
+
+
+
+      <!-- The button to open modal -->
+
+<!-- Put this part before body tag -->
+<input  type="checkbox" id="ai-modal-details" class="modal-toggle" />
+<div class="modal">
+  <div class="modal-box relative">
+    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
   </div>
+</div>
+
+
+
+
+
+
 
     </main>
 
@@ -68,5 +92,3 @@
     <script src="./js/ai.js"></script>
   </body>
 </html>
-
-
