@@ -55,9 +55,12 @@ const displayAI = (data) => {
                    </div>
        
                    <div >
-                     <span class="text-[#EB5757] p-5 bg-red-50 rounded-full">
-                     <i onclick="loadSingleData('${id}')"  class="fa-solid fa-arrow-right"></i
-                     ></span>
+                     
+
+                     <label for="ai-modal-details" ><span  class="text-[#EB5757] p-5 bg-red-50 rounded-full">
+                     <i  onclick="loadSingleData('${id}')"  class="fa-solid fa-arrow-right" ></i
+                     ></span></label>
+
                    </div>
                  </div>
     
@@ -79,11 +82,15 @@ const loadSingleData = async (id) => {
   
     const data = await res.json();
   
-    console.log(data.data);
+    showSingleData(data.data);
   };
 
 
-  
+  const showSingleData =(aiData)=> {
+
+      console.log(aiData);
+
+  }
 
 
 
