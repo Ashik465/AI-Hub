@@ -94,7 +94,7 @@ const loadSingleData = async (id) => {
     const modalContainer =document.getElementById('modal-body');
      modalContainer.innerHTML='';
 
-    const{image_link, input_output_examples} =aiData ;
+    const{image_link, input_output_examples,accuracy} =aiData ;
 
     const div = document.createElement('div');
     div.classList.add("modal-box", "relative", "overflow-visible", "w-11/12" , "max-w-5xl" );
@@ -127,8 +127,9 @@ const loadSingleData = async (id) => {
          <div>
       
              <div class="card w-full bg-base-100 shadow-xl">
-                 <figure class="p-5">
+                 <figure class="p-5 relative">
                    <img src="${image_link[0] } " alt="Shoes" class="rounded-xl" />
+                   <div class="badge badge-primary absolute right-2 top-1 bg-[#EB5757] border-none ">${accuracy.score? accuracy.score + " accuracy"  :"not available" }  </div>
                  </figure>
                  <div class="card-body items-center text-center">
                    <h2 class="card-title">${input_output_examples ? input_output_examples[0].input : 'Can you give any example?'}</h2>
