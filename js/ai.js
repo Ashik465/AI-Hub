@@ -58,8 +58,8 @@ const displayAI = (data) => {
                    <div >
                      
 
-                     <label for="ai-modal-details" ><span  class="text-[#EB5757] p-5 bg-red-50 rounded-full">
-                     <i  onclick="loadSingleData('${id}')"  class="fa-solid fa-arrow-right" ></i
+                     <label onclick="loadSingleData('${id}')" for="ai-modal-details" ><span  class="text-[#EB5757] p-5 bg-red-50 rounded-full">
+                     <i    class="fa-solid fa-arrow-right" ></i
                      ></span></label>
 
                    </div>
@@ -78,7 +78,7 @@ const displayAI = (data) => {
 
 const loadSingleData = async (id) => {
 
-    
+    console.log(id);
     const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
   
     const data = await res.json();
@@ -96,11 +96,11 @@ const loadSingleData = async (id) => {
 
     const{image_link, input_output_examples,accuracy,description,pricing, features, integrations} =aiData ;
 
-    const div = document.createElement('div');
-    div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
+    // const div = document.createElement('div');
+    // div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
     //   div.innerHTML='';  
     
-   div.innerHTML=`
+    modalContainer.innerHTML=`
     
     <label for="ai-modal-details" class="btn btn-sm btn-circle absolute right-2 top-6 z-10 md:-right-4 md:-top-5  bg-[#EB5757] border-none"> ✕</label>
      
@@ -183,7 +183,7 @@ const loadSingleData = async (id) => {
  
     `
 
-  modalContainer.appendChild(div);
+//   modalContainer.innerHTML=div.innerHTML;
 
   }
 
