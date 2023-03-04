@@ -108,7 +108,7 @@ const loadSingleData = async (id) => {
     
     modalContainer.innerHTML=`
     
-    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute right-2 top-6 z-10 md:-right-4 md:-top-5  bg-[#EB5757] border-none"> ✕</label>
+    <label for="ai-modal-details" class="btn btn-sm btn-circle absolute  z-10 -right-4 -top-5  bg-[#EB5757] border-none"> ✕</label>
      
      
        <div class="grid  grid-cols-1  md:grid-cols-2 gap-4 z-1  "> 
