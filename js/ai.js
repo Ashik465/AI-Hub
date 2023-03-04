@@ -140,11 +140,8 @@ const loadSingleData = async (id) => {
 
       <div>
      <h1 class=" font-bold text-xl ">Features</h1>
-       <ul class="list-disc list-inside">
-        <li>${features? features[1].feature_name : "Not available"}</li> 
-        <li>${features? features[2].feature_name : "Not available"}</li>
-        <li>${features? features[3].feature_name : "Not available"}</li>
-        <li>${features[4]? features[4].feature_name : "Not available"}</li>
+       <ul id="features" class="list-disc list-inside">
+        
        </ul>
       </div>
 
@@ -185,7 +182,7 @@ const loadSingleData = async (id) => {
  
  
     `
-
+    // integrations
     const ul =document.getElementById('integration');
 
     if(integrations) {
@@ -201,6 +198,21 @@ ul.innerHTML +=`<li> ${list} </li>`
 
        ul.innerHTML =`Data Not Found` 
     }
+
+    // features
+
+
+   const  ulFeature=  document.getElementById('features')
+
+    let featureList = features;
+
+    
+for (let prop in featureList) {
+    ulFeature.innerHTML +=`<li> ${featureList[prop].feature_name} </li>`
+}
+
+
+
 
 //   modalContainer.innerHTML=div.innerHTML;
 
