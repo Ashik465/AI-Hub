@@ -151,11 +151,8 @@ const loadSingleData = async (id) => {
       
       <div>
         <h1 class=" font-bold text-xl ">Integrations</h1>
-        <ul class="list-disc list-inside">
-            <li>${integrations? integrations[0] :"NO data found"}</li> 
-            <li>${integrations? integrations[1] :"NO data found"}</li>
-            <li>${integrations? integrations[2] :"NO data found"}</li>
-            <li>${integrations? integrations[3] :"NO data found"}</li>
+        <ul id ="integration" class="list-disc list-inside">
+            
            </ul>
       </div>
 
@@ -188,6 +185,22 @@ const loadSingleData = async (id) => {
  
  
     `
+
+    const ul =document.getElementById('integration');
+
+    if(integrations) {
+
+   ul.innerHTML =``
+   integrations.forEach(list =>{
+ul.innerHTML +=`<li> ${list} </li>`
+
+   })
+
+
+    } else {
+
+       ul.innerHTML =`Data Not Found` 
+    }
 
 //   modalContainer.innerHTML=div.innerHTML;
 
