@@ -51,14 +51,11 @@ if(data.length > 6){
     div.innerHTML = ` <figure><img class="rounded-lg " src=${image} alt="Shoes" /></figure>
     <h1 class="text-2xl font-bold my-2">Features</h1>
 
-    <div class="mb-4 text-[#585858]">
-                    <p>1.${features[0]}</p>
-                    <p>2.${features[1]}</p>
-                    <p class="${features[2]?  "block" :"hidden" }">3.${features[2]? features[2]:'Not available'}</p>
-                    <p class= "${features[3]?  "block" :"hidden" }">4.${features[3]? features[3]:'Not available'}</p>
+    <ul id="${id}" class=" list-decimal list-inside  mb-4 text-[#585858]">
                     
                     
-                   </div>
+                    
+                   </ul>
 
                    <hr>
                    <div class="flex  items-center place-content-between">
@@ -84,6 +81,27 @@ if(data.length > 6){
     `;
 
     container.appendChild(div);
+
+// feature in the card ui 
+
+  
+  
+  const featureContainer = document.getElementById(`${id}`);
+  
+  let html = "";
+  
+   
+   features.forEach(item => {
+      html += `<li>${item}</li>`;
+    });
+   
+ 
+  
+ 
+  featureContainer.innerHTML = html;
+
+
+
   });
 
   loader(false);
