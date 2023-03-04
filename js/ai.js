@@ -1,3 +1,5 @@
+let cardData =[];
+
 // fetch data
 
 const loadAI = async () => {
@@ -7,7 +9,11 @@ const loadAI = async () => {
   const data = await res.json();
 
   displayAI(data.data.tools.slice(0, 6));
+  cardData= data.data.tools.slice(0, 6) ;
+  
 };
+
+
 
 // display data
 
@@ -78,7 +84,7 @@ const displayAI = (data) => {
 
 const loadSingleData = async (id) => {
 
-    console.log(id);
+    // console.log(id);
     const res = await fetch(`https://openapi.programming-hero.com/api/ai/tool/${id}`);
   
     const data = await res.json();
@@ -89,7 +95,7 @@ const loadSingleData = async (id) => {
 
   const showSingleData =(aiData)=> {
 
-      console.log(aiData);
+    //   console.log(aiData);
 
     const modalContainer =document.getElementById('modal-body');
      modalContainer.innerHTML='';
@@ -206,6 +212,8 @@ const seeMore = async () => {
     seeMoreBtn.classList.add('hidden')
 
     displayAI(data.data.tools);
+    cardData= data.data.tools ;
+
   };
 
 
@@ -227,6 +235,38 @@ const loader = isLoading => {
     }
 
  }
+
+
+// sorting by date 
+
+const  sorted =() =>{
+
+    loader(true);
+
+    const sorting = (a,b) =>{
+
+       const dateA =new Date(a.published_in) ;
+       const dateB =new Date(b.published_in) ;
+
+       if(dateA < dateB){
+
+        return 1;
+       } else if (dateA > dateB){
+        return -1 ;
+       } else {
+
+        return 0 ;
+       }
+
+
+    };
+
+
+    displayAI(cardData.sort(sorting))
+
+};
+
+
 
 
 // default calling the function 
