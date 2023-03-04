@@ -4,6 +4,8 @@ let cardData =[];
 
 const loadAI = async () => {
     loader(true);
+    const seeMoreBtn = document.getElementById('see-more');
+    seeMoreBtn.classList.add('hidden')
   const res = await fetch("https://openapi.programming-hero.com/api/ai/tools");
 
   const data = await res.json();
@@ -18,14 +20,22 @@ const loadAI = async () => {
 // display data
 
 const displayAI = (data) => {
-  // console.log(data );
+  
+    const seeMoreBtn = document.getElementById('see-more');
+    seeMoreBtn.classList.remove('hidden')
+
+if(data.length > 6){
+
+    const seeMoreBtn = document.getElementById('see-more');
+    seeMoreBtn.classList.add('hidden')
+
+}
 
   const container = document.getElementById("card-container");
   container.innerHTML="";
 
   data.forEach((aiDetails) => {
-    // console.log(aiDetails);
-
+    
     const div = document.createElement("div");
     div.classList.add(
       "card",
@@ -77,6 +87,7 @@ const displayAI = (data) => {
   });
 
   loader(false);
+  
 };
 
 
@@ -102,9 +113,7 @@ const loadSingleData = async (id) => {
 
     const{image_link, input_output_examples,accuracy,description,pricing, features, integrations} =aiData ;
 
-    // const div = document.createElement('div');
-    // div.classList.add("modal-box", "relative", "overflow-visible", "w-full" , "max-w-5xl" ,"max-h-fit"  );
-    //   div.innerHTML='';  
+     
     
     modalContainer.innerHTML=`
     
@@ -234,11 +243,12 @@ const seeMore = async () => {
     const data = await res.json();
   
     const seeMoreBtn = document.getElementById('see-more');
-    seeMoreBtn.classList.add('hidden')
+   
 
     displayAI(data.data.tools);
-    cardData= data.data.tools ;
-
+  cardData= data.data.tools ;
+ seeMoreBtn.classList.add('hidden')
+ 
   };
 
 
